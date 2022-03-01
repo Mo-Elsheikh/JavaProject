@@ -1,0 +1,128 @@
+
+import java.util.LinkedList;
+
+ public class ListClass <T> implements MyCollectionInterfaceProject04 <T> {
+  
+   private Node firstNode;
+   private Node next;
+   private int numberOfEntries;
+	@Override
+	public boolean add(T newItem) {
+		boolean found = false ;
+		Node newNode = new Node(newItem);
+		if(contains(newItem)) {
+			found = false ;
+		} // End if 
+		else {
+		    newNode.setNextNode(firstNode);
+			firstNode = newNode ;
+			//internalList.add(firstNode);
+			found = true;
+			numberOfEntries++;	
+			} // End else 
+		return found;
+	} //End add
+	@Override
+	public boolean add(T newItem, int position) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean remove(T anEntry) {
+		Node temp ;
+		Node currentNode = firstNode ;
+		boolean found = false ;
+		if (isEmpty()) {
+			firstNode = null;
+			found = false ;
+		}
+		else if (contains(anEntry)) {
+			temp = currentNode.nextNode;
+			currentNode.nextNode =  currentNode.nextNode.nextNode;
+			temp.nextNode = null;
+			temp = null;
+		  } // End if
+		
+			
+	return found;
+	}
+	@Override
+	public void clear() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getCurrentSize() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean isEmpty() {
+		boolean found = false ;
+		if(numberOfEntries == 0 ) {
+			 found = true ;
+		} //  End if 
+		else {
+			found = false ;
+		} // End else
+		return found;
+	} // End isEmpty()
+
+	@Override
+	public int getFrequencyOf(T anEntry) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean contains(T anEntry) {
+	   boolean found = false;
+	   Node currentNode = firstNode;
+	   while (!found && (currentNode != null )) {
+		   if ( anEntry.equals(currentNode.getData())) {
+			   found = true;
+		   } // End if 
+		   else {
+			   currentNode = currentNode.getNexNodet();
+		   } // else
+	   } // End while
+	   return found;
+	} // End contains
+
+	@Override
+	public T[] toArray() {
+
+		
+			return null;	
+	}
+	private class Node <T> {
+		private T data;	
+		private Node  nextNode;
+		private Node prev;
+		private Node(T newItem ) {
+			data = newItem;
+		} // 
+		private T getData() {
+			return this.data;
+		}
+		private void setData(T newData) {
+			this.data = newData;
+		}
+		private Node getNexNodet() {
+			return this.nextNode;
+		}
+		private void setNextNode(Node nextNode) {
+			this.nextNode = nextNode;
+		}
+		private Node getPrevNode() {
+			return this.prev;
+		}
+		private void setprev(Node prev) {
+			this.prev = prev;
+		}
+	}
+}
+

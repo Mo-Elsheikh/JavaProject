@@ -1,0 +1,130 @@
+ import java.util.Scanner;         // Access the Scanner class
+ import java.io.File;              // Access
+ import java.io.FileWriter;        // 
+ import java.io.PrintWriter;       // Access PrintWriter and related classes
+ import java.io.IOException;
+ import java.io.FileNotFoundException;                                      
+ public class FirestnameLastname {	
+	 
+	private static Student student1;
+	private static GradeItem gradeItem1;
+	private static Student student2;
+	private static GradeItem gradeItem2;
+	
+	public static final String INPUT_FILENAME = "Project_02_Input01.txt";
+	public static final String OUTPUT_FILENAME = "Project_02_Output01.txt";
+	
+
+  
+	public static void main(String[] args)throws IOException {
+	
+		
+	    File inputDataFile = new File(INPUT_FILENAME);
+		Scanner input  = new Scanner(inputDataFile);
+		FileWriter outputDataFile = new FileWriter (OUTPUT_FILENAME);
+	    PrintWriter output= new PrintWriter (outputDataFile);
+	    System.out.println(student1.toString());
+		 
+	     System.out.println(gradeItem1.toString());
+
+	    String[] data = new String [2] ;
+	    int numberLines = 0 ;
+	    
+	    numberLines = input.nextInt();
+	    if ( numberLines >= data.length ) {
+	         data [numberLines] = input.nextLine();
+	         data[numberLines].split(data[numberLines] );
+	         numberLines++;
+	       
+	    } // End if 
+	    else {
+	    	throw new (" Filed is not found");
+	    	
+	    } // End else 
+ /****************************************************************************/
+	    boolean firestItem = false ;
+	    for (int i =0 ; i >= data.length ; i++) {
+			  if (data[i] == " STUDENT " ) {
+				  firestItem = true ;
+				  
+			  } // End if
+		  } //End for
+ /****************************************************************************/	    
+	   input.close();
+	   output.close();
+       System.exit(0);
+	} // End main 
+ /****************************************************************************/ 
+	
+ /****************************************************************************/ 
+	  public static void processStudentdata(String [] data) {
+		  try {
+			    boolean firestItem = false ;
+			    for (int i =0 ; i >= data.length ; i++) {
+			    	
+					  if (data[i] == " ADD " ) {
+						  firestItem = true ;
+					  } // End if
+				  } // End for
+			    
+		  } // End try
+		 catch (Exception e) {
+			 System.out.println(" The item not match ");
+			 
+		 }
+	  }
+	
+ /*****************************************************************************/
+	/** To find student1 equal student2
+	 * @return, boolean 
+	 */
+	public boolean  equalStudent() {
+		boolean result = false ;
+		if(student1.getStudentId().equals(student2.getStudentId())
+		   && student1.getFirstName().equals(student2.getFirstName())
+		   && student1.getlastName().equals(student2.getlastName())
+		   && student1.getEmialAddress().equals(student2.getEmialAddress())) {
+			result = true ;
+		} // End 
+      return result ;
+	} // End  equals student 1 and student 2
+  /****************************************************************************/
+	/** To find grade item 1 equal grade item 2
+	 * @return, boolean 
+	 */
+	public boolean  equalsGradItem() {
+		boolean result = false ;
+		if ( gradeItem1.getSutdentId().equals(gradeItem2.getSutdentId())
+			  && gradeItem1.getCourseId().equals(gradeItem2.getCourseId())
+			  && gradeItem1.getDate().equals(gradeItem2.getCourseId())
+			  && gradeItem1.getMaximumScore() == gradeItem2.getMaximumScore()
+			  && gradeItem1.getActualScore() == gradeItem2.getActualScore()
+			  && gradeItem1.getGradeItemId() == gradeItem2.getMaximumScore() ) {
+			 result = true ;
+			 
+		 } // End 
+		 return result ;
+	} // End equals grade item 1 and grade item 2  
+ /****************************************************************************/
+	/** Display message the two student's equal or not and the two grade
+	 * item equal or not.
+	 * @param equalsStudent, the boolean value for student1 equal student2
+	 * @param equalsGradeItem, the boolean value for grade item1 equal grade
+	 * item2
+	 */
+	public void displayMessage ( boolean equalsStudent ,
+			                       boolean equalsGradeItem ) {
+		if ( equalsStudent == true ) {
+			System.out.println(" The student 1 equal student 2 ");	
+		} // End if
+		else {
+			System.out.println(" The student 1 not equal student2");
+		} // End else
+		if ( equalsGradeItem == true ) {
+			System.out.println(" The grade item 1 equal grade item 2 ");	
+		} // End if 
+		else {
+			System.out.println(" The grade item 1 not equal grade item 2");
+		} // End else
+	} // End display message 
+ } // End the class

@@ -1,0 +1,149 @@
+
+
+ public class ListClass <T> implements MyCollectionInterfaceProject04 <T> {
+  
+   private Node firstNode;
+
+   private int numberOfEntries = 0;
+	@Override
+	public boolean add(T newItem) {
+		boolean found = false ;
+		if(contains(newItem)) {
+			found = false ;
+		} // End if 
+		else {
+			Node newNode = new Node(newItem);
+			newNode.setNextNode(firstNode);
+			firstNode = newNode ;
+			found = true;
+			numberOfEntries++;	
+			} // End else 
+		return found;
+	} //End add
+	@Override
+	public boolean add(T newItem, int position) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	
+	@Override
+	public boolean remove(T anEntry) {
+		Node temp ;
+		Node prve = new Node(null);
+		Node currentNode = firstNode ;
+		boolean found = false ;
+		 if ( contains(anEntry) ) {
+			 while ((currentNode != null )) {
+				 if (currentNode.equals(anEntry) ) {
+					 temp = currentNode ;
+					 currentNode = currentNode.getNextNode();
+					 temp = null;
+					 found = true ;
+					 numberOfEntries--;
+				 }
+				 else if( anEntry.equals(currentNode.nextNode.getData()) ) {
+					 temp = currentNode.getNextNode();
+					 currentNode = currentNode.nextNode;
+					 temp = null;
+					 found = true ;
+					 numberOfEntries--;
+				 }
+				 else if ( anEntry.equals(currentNode.nextNode.nextNode.getData()) ) { 
+                        temp = currentNode.getNextNode();
+			            currentNode.nextNode = currentNode.nextNode.getNextNode();
+			            temp.nextNode = null;
+			            temp = null;
+			            found = true;
+			            numberOfEntries--;
+			            
+		  } // End if	
+				 else  {
+					 
+				 }
+		  } // End while
+		} // End if 
+	    return found;
+	}
+	
+	@Override
+	public void clear() {
+		// TODO Auto-generated method stub
+		firstNode = null;
+	}
+
+	@Override
+	public int getCurrentSize() {
+		return this.numberOfEntries;
+	}
+
+	@Override
+	public boolean isEmpty() {
+		boolean found = false ;
+		if(numberOfEntries == 0 ) {
+			 found = true ;
+		} //  End if 
+		else {
+			found = false ;
+		} // End else
+		return found;
+	} // End isEmpty()
+
+	@Override
+	public int getFrequencyOf(T anEntry) {
+	int frequnecy = 0;
+	Node cu = 
+		return 0;
+	}
+
+	@Override
+	public boolean contains(T anEntry) {
+	   boolean found = false;
+	   Node currentNode = firstNode;
+	   while (!found && (currentNode != null )) {
+		   if ( anEntry.equals(currentNode.getData())) {
+			   found = true;
+		   } // End if 
+		   else {
+			   currentNode = currentNode.getNextNode();
+		   } // else
+	   } // End while
+	   return found;
+	} // End contains
+
+	@Override
+	public T[] toArray() {
+	   @SuppressWarnings("unchecked")
+	   T[] result = (T[]) new Object[numberOfEntries];
+	   int index = 0;
+	   Node currentNode = firstNode ;
+	   while ((index < numberOfEntries) && currentNode != null) {
+		   result [index] = (T)currentNode.getData();
+		   currentNode = currentNode.getNextNode();
+		   index++;
+	   }
+		return result;	
+	}
+	private class Node <T> {
+	  private Node  nextNode ;
+	  private T data;
+	  private Node (T newData) {
+		 this.data = newData;
+		 nextNode = null ;
+       
+	  } // End 
+	  private void setNextNode(Node nextNode){
+		  this.nextNode = nextNode;
+	  } // End 
+	  private void setData(T data) {
+		  this.data = data;
+		  
+	  }
+	  private T getData() {
+		  return this.data;
+	}  
+    private Node getNextNode() {
+    	return this.nextNode;
+    }
+  }
+ }

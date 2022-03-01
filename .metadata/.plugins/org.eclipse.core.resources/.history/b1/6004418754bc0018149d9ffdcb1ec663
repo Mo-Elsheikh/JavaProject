@@ -1,0 +1,51 @@
+ import java.util.Scanner;         // Access the Scanner class
+ import java.io.File;              // Access
+ import java.io.FileWriter;        // 
+ import java.io.PrintWriter;       // Access PrintWriter and related classes
+ import java.io.IOException;                                  
+ public class FirestnameLastname {	
+	 
+	static Student student1 = new Student
+			("900123456","Joe","Doe","joedoe@msudenver.edu");
+	 static GradeItem gradeItem1 = new GradeItem 
+			(1,"900123456", "23456", "HW", "20170112", 100, 95);
+	 static Student student2;
+	 static GradeItem gradeItem2;
+	
+	public static final String INPUT_FILENAME = "Project_02_Input01.txt";
+	public static final String OUTPUT_FILENAME = "Project_02_Output01.txt";
+
+	public static void main(String[] args) throws IOException {
+	
+		
+	    File inputDataFile = new File(INPUT_FILENAME);
+		Scanner input  = new Scanner(inputDataFile);
+		FileWriter outputDataFile = new FileWriter (OUTPUT_FILENAME);
+	    PrintWriter output= new PrintWriter (outputDataFile);
+	    System.out.println(student1.toString());
+		 
+	     System.out.println(gradeItem1.toString());
+	   
+ /****************************************************************************/
+ /****************************************************************************/	    
+	   
+	  input.close();
+	  output.close();
+	  System.exit(0);
+	} // End main 
+
+ /****************************************************************************/ 
+	  public static void processStudentData(String [] data) {
+		  try {
+			    boolean firestItem = false ;
+			    for (int i = 0 ; i >= data.length ; i++) {
+					  if (data[i] == " ADD " ) {
+						  firestItem = true ;
+					  } // End if
+				  } // End for 
+		  } // End try
+		 catch (Exception e) {
+			 System.out.println(e.getMessage());
+		 } // End catch
+	  } // En
+ } // End the class

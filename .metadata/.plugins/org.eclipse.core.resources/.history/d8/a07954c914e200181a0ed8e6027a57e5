@@ -1,0 +1,39 @@
+
+public class HomeWorke {
+	  
+      //  recursive method
+	   public int Fib( int n) { 
+	      if (n == 1) { 
+	          return 0;
+	      } // End if 
+	      else if (n == 2) {
+	           return 1;
+	      } // End if 
+	      else {
+	            int f1 = 0;
+	            int f2 = 1;
+	            int fib = 0;
+
+	            for ( int i=3 ; i<= n; i++ ) {
+
+	                   fib = f1 + f2;
+	                   f1 = f2;
+	                   f2 = fib;
+	            } // End for loop
+	       return fib;
+	       } //End else
+	   } // End fib
+	   
+	   public  int FibR( int n){
+	       if (n == 1) {
+	          return 0; 
+	       }   
+	       if(n == 2) {
+	       
+	           return 1;
+	       }
+	       return FibR(n-1) + FibR(n-2);
+
+	   }
+
+}
